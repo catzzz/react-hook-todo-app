@@ -33,17 +33,3 @@ export default (initialTodos) => {
   };
 };
 
-//   const removeTodo = todoId => {
-//     // filter out removed todo
-//     const updateTodos = todos.filter(todo =>todo.id !== todoId);
-//     setTodos(updateTodos);
-//   }
-//   const toggleTodo = todoId =>{
-//       const updateTodos = todos.map(todo => todo.id === todoId ? {...todo, completed:!todo.completed}:todo);
-//       setTodos(updateTodos);
-//   }
-
-//   const editTodo = (todoId, newTask) => {
-//     const updateTodos = todos.map(todo => todo.id === todoId ? {...todo, task:newTask}:todo);
-//     setTodos(updateTodos);
-//   }

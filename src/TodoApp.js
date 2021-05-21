@@ -9,39 +9,24 @@ import TodoForm from "./TodoForm";
 import { v4 as uuidv4 } from 'uuid';
 import useTodoState from './hooks/useTodoState';
 import useLocalStorageState from './hooks/useLocalStorageState';
+import {TodoProvider, TodosProvider} from './contexts/todos.context';
 
 
 function TodoApp() {
   const initialTodos = JSON.parse(window.localStorage.getItem("todos")|| "[]");
-  const{todos, addTodo,removeTodo,toggleTodo,editTodo} = useTodoState(initialTodos)
-//   const initialTodos = [
+//     const initialTodos = [
 //     { id: uuidv4(), task: "Clean Fishtank", completed: false },
 //     { id: uuidv4(), task: "Was Car", completed: true },
 //     { id: uuidv4(), task: "Grow Beard", completed: false },
 //   ];
+  const{todos, addTodo,removeTodo,toggleTodo,editTodo} = useTodoState(initialTodos)
+
 //   const [todos, setTodos] = useState(initialTodos);
 
   useEffect(()=>{
       window.localStorage.setItem("todos", JSON.stringify(todos));
   },[todos]);
 
-//   const addTodo = (newTodoText) => {
-//     setTodos([...todos, { id: uuidv4(), task: newTodoText, completed: false }]);
-//   };
-//   const removeTodo = todoId => {
-//     // filter out removed todo 
-//     const updateTodos = todos.filter(todo =>todo.id !== todoId);
-//     setTodos(updateTodos);
-//   }
-//   const toggleTodo = todoId =>{
-//       const updateTodos = todos.map(todo => todo.id === todoId ? {...todo, completed:!todo.completed}:todo);
-//       setTodos(updateTodos);
-//   }
-
-//   const editTodo = (todoId, newTask) => {
-//     const updateTodos = todos.map(todo => todo.id === todoId ? {...todo, task:newTask}:todo);
-//     setTodos(updateTodos);
-//   }
   return (
     <Paper
       style={{
@@ -59,8 +44,11 @@ function TodoApp() {
       </AppBar>
       <Grid container justify="center" style={{marginTop:"1rem"}}>
         <Grid item xs={11} md={8} lg={4}>
+           <TodoProvider>
+               
           <TodoForm addTodo={addTodo} />
           <TodoList todos={todos} removeTodo = {removeTodo} toggleTodo= {toggleTodo} editTodo = {editTodo}/>
+          </TodoProvider> 
         </Grid>
       </Grid>
     </Paper>
