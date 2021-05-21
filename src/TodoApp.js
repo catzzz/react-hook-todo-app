@@ -13,19 +13,11 @@ import {TodoProvider, TodosProvider} from './contexts/todos.context';
 
 
 function TodoApp() {
-  const initialTodos = JSON.parse(window.localStorage.getItem("todos")|| "[]");
-//     const initialTodos = [
-//     { id: uuidv4(), task: "Clean Fishtank", completed: false },
-//     { id: uuidv4(), task: "Was Car", completed: true },
-//     { id: uuidv4(), task: "Grow Beard", completed: false },
-//   ];
-  const{todos, addTodo,removeTodo,toggleTodo,editTodo} = useTodoState(initialTodos)
 
-//   const [todos, setTodos] = useState(initialTodos);
 
-  useEffect(()=>{
-      window.localStorage.setItem("todos", JSON.stringify(todos));
-  },[todos]);
+//   useEffect(()=>{
+//       window.localStorage.setItem("todos", JSON.stringify(todos));
+//   },[todos]);
 
   return (
     <Paper
@@ -46,8 +38,8 @@ function TodoApp() {
         <Grid item xs={11} md={8} lg={4}>
            <TodoProvider>
                
-          <TodoForm addTodo={addTodo} />
-          <TodoList todos={todos} removeTodo = {removeTodo} toggleTodo= {toggleTodo} editTodo = {editTodo}/>
+          <TodoForm />
+          <TodoList />
           </TodoProvider> 
         </Grid>
       </Grid>
