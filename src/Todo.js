@@ -13,7 +13,7 @@ import Divider from "@material-ui/core/Divider";
 import { TodoContext } from "./contexts/todos.context";
 
 function Todo({ task, completed, id, }) {
-    const{removeTodo, toggleTodo} = useContext(TodoContext);
+    const{dispatch} = useContext(TodoContext);
   const [isEditing, toggle] = useToggle(false);
   return (
     <ListItem style={{ height: "64px" }}>
@@ -21,14 +21,14 @@ function Todo({ task, completed, id, }) {
         <EditTodoForm  id={id} key ={id} task= {task} toggleEditForm={toggle}/>
       ) : (
         <>
-          <Checkbox checked={completed} onClick={() => toggleTodo(id)} />
+          <Checkbox checked={completed} onClick={() => dispatch({type:"TOGGLE",id:id})} />
           <ListItemText
             style={{ textDecoration: completed ? "line-through" : "none" }}
           >
             {task}
           </ListItemText>
           <ListItemSecondaryAction>
-            <IconButton aria-label="Delete" onClick={() => removeTodo(id)}>
+            <IconButton aria-label="Delete" onClick={() => dispatch({type:"REMOVE",id:id})}>
               <DeletIcon />
             </IconButton>
             <IconButton aria-label="Edit" onClick={toggle}> 

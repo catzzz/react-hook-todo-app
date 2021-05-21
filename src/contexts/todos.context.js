@@ -1,4 +1,5 @@
-import React ,{createContext} from "react";
+import React ,{createContext, useReducer} from "react";
+import todoReducer from '../reducer/todo.reducer';
 import { v4 as uuidv4 } from 'uuid';
 // import useToggleState from "../../../context-demo-app-add-initial-components/src/hooks/useToggleState";
 import useTodoState from '../hooks/useTodoState';
@@ -10,9 +11,10 @@ const defaultTodos = [
 export const TodoContext = createContext();
 
 export function TodoProvider(props) {
-    const todoStuff = useTodoState(defaultTodos);
+    // const todoStuff = useTodoState(defaultTodos);
+    const [todos, dispatch] = useReducer(todoReducer, defaultTodos)
     return(
-        <TodoContext.Provider value = {todoStuff}>
+        <TodoContext.Provider value = {{todos, dispatch}}>
             {props.children}
         </TodoContext.Provider>
     );
