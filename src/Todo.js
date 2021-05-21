@@ -10,10 +10,10 @@ import Edit from "@material-ui/icons/Edit";
 import useToggle from "./hooks/useToggle";
 import EditTodoForm from './EditTodoForm';
 import Divider from "@material-ui/core/Divider";
-import { TodoContext } from "./contexts/todos.context";
+import { DispatchContext } from "./contexts/todos.context";
 
 function Todo({ task, completed, id, }) {
-    const{dispatch} = useContext(TodoContext);
+    const dispatch = useContext(DispatchContext);
   const [isEditing, toggle] = useToggle(false);
   return (
     <ListItem style={{ height: "64px" }}>
