@@ -1,6 +1,6 @@
-import React,{useContext} from "react";
+import React,{useContext, memo} from "react";
 import TextField from "@material-ui/core/TextField";
-import Edit from "@material-ui/icons/Edit";
+
 import useInputState from "./hooks/useInputState";
 import {DispatchContext} from './contexts/todos.context';
 
@@ -31,4 +31,4 @@ function EditTodoForm({ id,  task, toggleEditForm }) {
   );
 }
 
-export default EditTodoForm;
+export default memo(EditTodoForm);

@@ -1,4 +1,4 @@
-import React, { useState , useEffect} from "react";
+import React from "react";
 import Typography from "@material-ui/core/Typography";
 import Paper from "@material-ui/core/Paper";
 import AppBar from "@material-ui/core/AppBar";
@@ -6,10 +6,8 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Grid from "@material-ui/core/Grid";
 import TodoList from "./TodoList";
 import TodoForm from "./TodoForm";
-import { v4 as uuidv4 } from 'uuid';
-import useTodoState from './hooks/useTodoState';
-import useLocalStorageState from './hooks/useLocalStorageState';
-import {TodoProvider, TodosProvider} from './contexts/todos.context';
+
+import {TodoProvider} from './contexts/todos.context';
 
 
 function TodoApp() {
